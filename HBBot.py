@@ -3,9 +3,9 @@ import telebot
 bot = telebot.TeleBot('1396056288:AAFvLocEmnwVFxI9jEKXwE0lUntZq_8cZPg')
 
 keyboard1 = telebot.types.ReplyKeyboardMarkup(True)
-keyboard1.row('Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 
-'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь')
-
+keyboard1.row('Январь', 'Февраль', 'Март', 'Апрель')
+keyboard1.row('Май', 'Июнь', 'Июль', 'Август')
+keyboard1.row('Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь')
 @bot.message_handler(commands=['start'])                               #Декоратор
 def start_message(message):
     bot.send_message(message.chat.id, "Выберите месяц", reply_markup = keyboard1)
