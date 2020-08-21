@@ -1,4 +1,4 @@
-import telebot 
+import telebot
 
 bot = telebot.TeleBot('1396056288:AAFvLocEmnwVFxI9jEKXwE0lUntZq_8cZPg')
 
@@ -6,13 +6,15 @@ keyboard1 = telebot.types.ReplyKeyboardMarkup(True)
 keyboard1.row('Январь', 'Февраль', 'Март', 'Апрель')
 keyboard1.row('Май', 'Июнь', 'Июль', 'Август')
 keyboard1.row('Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь')
-@bot.message_handler(commands=['start'])                               #Декоратор
+
+@bot.message_handler(commands=['start'])                              # Декоратор
 def start_message(message):
-    bot.send_message(message.chat.id, "Выберите месяц", reply_markup = keyboard1)
+    bot.send_message(message.chat.id, "Выберите месяц", reply_markup=keyboard1)
+
 @bot.message_handler(content_types=['text'])
 def send_text(message):
-    if message.text == 'Январь':                                       #Сообщение пользователя
-        bot.send_message(message.chat.id, '05 - Января - Алексей К')   #Ответа бота на сообщение выше
+    if message.text == 'Январь':                                      # Сообщение пользователя
+        bot.send_message(message.chat.id, '05 - Января - Алексей К')  # Ответа бота на сообщение выше
         bot.send_message(message.chat.id, '08 - Января - Жанна')
         bot.send_message(message.chat.id, '11 - Января - Ксюша')
         bot.send_message(message.chat.id, '16 - Января - Настя')
@@ -33,7 +35,7 @@ def send_text(message):
         bot.send_message(message.chat.id, '09 - Июня - Саша')
         bot.send_message(message.chat.id, '09 - Июня - Нина')
         bot.send_message(message.chat.id, '12 - Июня - Вова')
-        bot.send_message(message.chat.id, '09 - Июня - Гусельникова Галина')
+        bot.send_message(message.chat.id, '27 - Июня - Гусельникова Галина')
     elif message.text == 'Июль':
         bot.send_message(message.chat.id, '07 - Июля - Кристина')
         bot.send_message(message.chat.id, '07 - Июля - Гусельников Владимир Алексеевич')
@@ -67,5 +69,5 @@ def send_text(message):
         bot.send_message(message.chat.id, '12 - Декабря - Ирина')
         bot.send_message(message.chat.id, '22 - Декабря - Виктор')
         bot.send_message(message.chat.id, '29 - Декабря - Гусельникова Елена')
-        
+
 bot.polling()
