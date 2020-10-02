@@ -7,13 +7,15 @@ keyboard1.row('Январь', 'Февраль', 'Март', 'Апрель')
 keyboard1.row('Май', 'Июнь', 'Июль', 'Август')
 keyboard1.row('Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь')
 
-@bot.message_handler(commands=['start'])                              # Декоратор
+
+@bot.message_handler(commands=['start'])
 def start_message(message):
     bot.send_message(message.chat.id, "Выберите месяц", reply_markup=keyboard1)
 
+
 @bot.message_handler(content_types=['text'])
 def send_text(message):
-    if message.text == 'Январь':                                      # Сообщение пользователя
+    if message.text == 'Январь':  # Сообщение пользователя
         bot.send_message(message.chat.id, '05 - Января - Алексей К')  # Ответа бота на сообщение выше
         bot.send_message(message.chat.id, '08 - Января - Жанна')
         bot.send_message(message.chat.id, '11 - Января - Ксюша')
@@ -69,5 +71,6 @@ def send_text(message):
         bot.send_message(message.chat.id, '12 - Декабря - Ирина')
         bot.send_message(message.chat.id, '22 - Декабря - Виктор')
         bot.send_message(message.chat.id, '29 - Декабря - Гусельникова Елена')
+
 
 bot.polling()
